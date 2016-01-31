@@ -1,8 +1,12 @@
 package demo;
 
 public class A {
-    public void foo(String x) {
-        System.out.println("A.foo() called");
+    public void foo() {
+        //System.out.println("A.foo() called");
+        Bean bean = new Bean("Dimkas");
+
+        //System.out.println(bean); will be done with javassist
+
     }
 
     public void slowMethod() {
@@ -12,4 +16,10 @@ public class A {
             e.printStackTrace();
         }
     }
+
+    public void boo() {
+
+        System.out.println("A.boo() called");
+    }
+
 }
