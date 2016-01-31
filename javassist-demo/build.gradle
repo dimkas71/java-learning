@@ -10,7 +10,7 @@ repositories {
     mavenCentral()
 }
 
-mainClassName = "demo.Example1"
+mainClassName = "demo.Example2"
 
 dependencies {
     compile 'org.javassist:javassist:3.20.0-GA'
