@@ -8,12 +8,11 @@ public class Example2 {
 
         CtClass ct = cp.get("demo.A");
 
-        CtMethod foo = ct.getMethod("foo", "()V");
+        CtMethod foo = ct.getMethod("foo", "(Ljava/lang/String;)V");
 
-        foo.setBody("{System.out.println(\"Hello JPoint\");}");
+        foo.setBody("{System.out.println($1);}");
 
-        Util.invokeViaReflection(ct.toClass(), "foo");
-
+        Util.invokeViaReflectionWithParams(ct.toClass(), "foo", new Class[]{String.class}, new Object[]{"Hello JPoint"});
 
     }
 }
