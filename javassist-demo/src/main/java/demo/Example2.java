@@ -2,17 +2,29 @@ package demo;
 
 import javassist.*;
 
+import java.util.concurrent.TimeUnit;
+
 public class Example2 {
     public static void main(String[] args) throws Exception {
         ClassPool cp = ClassPool.getDefault();
 
         CtClass ct = cp.get("demo.A");
 
-        CtMethod foo = ct.getMethod("foo", "(Ljava/lang/String;)V");
+        CtMethod slowMethod = ct.getMethod("slowMethod", "()V");
 
-        foo.setBody("{System.out.println($1);}");
+        CtMethod slowMethod1 = CtNewMethod.copy(slowMethod, "__slowMethod", ct, null);
 
-        Util.invokeViaReflectionWithParams(ct.toClass(), "foo", new Class[]{String.class}, new Object[]{"Hello JPoint"});
+        ct.addMethod(slowMethod1);
+
+        slowMethod.setBody("try { " +
+                "long start = System.currentTimeMillis();" +
+                "__slowMethod();" +
+                "long end = System.currentTimeMillis();" +
+                "System.out.println(\"running \" + java.util.concurrent.TimeUnit.MILLISECONDS.toSeconds(end - start) + \" seconds\");" +
+                "} catch (Exception e){}");
+
+
+        Util.invokeViaReflection(ct.toClass(), "slowMethod");
 
     }
 }
