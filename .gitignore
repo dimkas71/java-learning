@@ -5,3 +5,4 @@ javassist-demo/build
 gradlew
 gradlew.bat
 *.iml
+*.class
