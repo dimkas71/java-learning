@@ -6,3 +6,5 @@ gradlew
 gradlew.bat
 *.iml
 *.class
+antlr-demo/build
+antlr-demo/gen

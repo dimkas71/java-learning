@@ -1,0 +1,58 @@
+group 'codeeval-puzzles'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'antlr'
+apply plugin: 'application'
+apply plugin: 'idea'
+apply plugin: 'groovy'
+
+sourceCompatibility = 1.8
+
+project.ext {
+    packageName = "demo"
+}
+
+ext.packageName = 'demo'
+
+repositories {
+    mavenCentral()
+}
+
+
+idea {
+    module {
+        generatedSourceDirs += file('build/generated-src')
+    }
+}
+
+generateGrammarSource {
+    doFirst {
+        //clean gen directory
+        println 'Deleting...'
+        if (new File('gen/demo').exists()) {
+            new File('gen/demo').delete()
+        }
+    }
+    arguments += ["-package", "demo"]
+
+    //to work in idea, copy generated code to gen folder that marked as generated src
+    doLast {
+        println "${project.ext.packageName}"
+        copy {
+            from 'build/generated-src/antlr/main/demo'
+            include '*.*'
+            into 'gen/demo'
+        }
+
+    }
+}
+
+
+mainClassName = 'demo.Main'
+
+dependencies {
+    antlr 'org.antlr:antlr4:4.5.1-1'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
+}
