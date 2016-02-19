@@ -1,0 +1,28 @@
+group 'java-learning'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'idea'
+
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+mainClassName = "com.dimkas71.demo.Main"
+jar {
+    manifest {
+        attributes('Manifest-Version':1.0,
+                'Main-Class':'com.dimkas71.demo.Main',
+                'Class-Path': '.')
+    }
+}
+dependencies {
+    compile 'javax.annotation:jsr250-api:1.0'
+    compile 'com.google.dagger:dagger:2.0.2'
+    compile 'com.google.dagger:dagger-compiler:2.0.2'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}

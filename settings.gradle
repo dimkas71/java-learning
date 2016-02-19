@@ -1,3 +1,6 @@
 rootProject.name = 'java-learning'
 include 'javassist-demo'
 include 'antlr-demo'
+include 'dagger-demo'
+include 'regular-expressions'
+
