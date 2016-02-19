@@ -1,9 +1,7 @@
 import demo.CalculatorException
 import demo.CalculatorImpl
-import spock.lang.Ignore
 import spock.lang.Specification
 import spock.lang.Unroll
-
 
 class CalculatorSpec extends Specification {
 
@@ -19,6 +17,9 @@ class CalculatorSpec extends Specification {
             "1 + 2 * 3"                     || 7
             "(1 + 2) * 3 - 4"               || 5
             "1 + 2 * 3 - 4 * (12 - 3 * 3)"  || -5
+            "-5"                            || -5
+            "-5 + 4"                        || -1
+            "- 5 + 10"                      || 5
 
     }
 

@@ -9,8 +9,7 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        System.out.println("Hello world");
-        CharStream is = new ANTLRInputStream(" x = 3");
+        CharStream is = new ANTLRInputStream("x=3");
 
 
         Lexer lexer = new ExampleLexer(is);

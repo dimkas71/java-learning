@@ -18,7 +18,7 @@ public class DemoCalculatorRunner {
 
         } catch (CalculatorException e) {
             System.out.println(String.format("Error: %s", e.getMessage()));
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
 

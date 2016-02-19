@@ -1,11 +1,9 @@
 package demo;
 
-import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.tree.ErrorNode;
+import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
-import org.antlr.v4.runtime.tree.TerminalNode;
 
-import java.util.Calendar;
 import java.util.Stack;
 
 public class CalculatorImpl extends CalculatorBaseListener implements Calculator {
@@ -70,7 +68,7 @@ public class CalculatorImpl extends CalculatorBaseListener implements Calculator
                 stack.push(left - right);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 
@@ -88,7 +86,7 @@ public class CalculatorImpl extends CalculatorBaseListener implements Calculator
                 stack.push(left / right);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 
@@ -97,4 +95,8 @@ public class CalculatorImpl extends CalculatorBaseListener implements Calculator
         stack.push(Integer.parseInt(ctx.NUMBER().getText()));
     }
 
+    @Override
+    public void exitUnaryMinus(CalculatorParser.UnaryMinusContext ctx) {
+        stack.push(-Integer.parseInt(ctx.NUMBER().getText()));
+    }
 }

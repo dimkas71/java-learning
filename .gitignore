@@ -8,3 +8,4 @@ gradlew.bat
 *.class
 antlr-demo/build
 antlr-demo/gen
+regular-expressions/build
