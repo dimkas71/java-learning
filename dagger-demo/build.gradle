@@ -2,7 +2,6 @@ group 'java-learning'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
-apply plugin: 'application'
 apply plugin: 'idea'
 
 
@@ -11,14 +10,6 @@ sourceCompatibility = 1.8
 repositories {
     mavenCentral()
     jcenter()
-}
-mainClassName = "com.dimkas71.demo.Main"
-jar {
-    manifest {
-        attributes('Manifest-Version':1.0,
-                'Main-Class':'com.dimkas71.demo.Main',
-                'Class-Path': '.')
-    }
 }
 dependencies {
     compile 'javax.annotation:jsr250-api:1.0'
