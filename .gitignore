@@ -9,3 +9,5 @@ gradlew.bat
 antlr-demo/build
 antlr-demo/gen
 regular-expressions/build
+out/
+build/
